@@ -19,7 +19,7 @@ loginForm.addEventListener('submit', (event) => {
       if (allowPublicPassword) {
         isValid = true;
       } else {
-        alert('EZGAMES is temporarily unavailable please try again later.');
+        alert('ezgames is temporarily unavailable please try again later.');
         return;
       }
     } else if (enteredPassword === '2900') {
