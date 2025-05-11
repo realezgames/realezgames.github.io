@@ -19,7 +19,7 @@ loginForm.addEventListener('submit', (event) => {
       if (allowPublicPassword) {
         isValid = true;
       } else {
-        alert('EZGAMES is temporarily unavailable please try again later.');
+        alert('EZGAMES is temporarily unavailable please try again later.'); // Alert for public password being disabled
         return;
       }
     } else if (enteredPassword === '2900') {
@@ -34,7 +34,7 @@ loginForm.addEventListener('submit', (event) => {
     loginForm.style.display = 'none';
     clicksoundeffect.play();
   } else {
-    alert('Error: Invalid username or password');
+    alert('Error: Invalid username or password'); 
   }
 });
 
