@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Geography+</title>
+    <link rel="shortcut icon" href="Geo2.png">
+    <link rel="stylesheet" href="./src/main.css">
+  </head>
+<body>
+  <style>
+    body 
+	  * {
+	background: black;
+    cursor: url('cursor.cur'), default;
+}
+  
+    h1 {
+        color: #0088FF;
+  font-family: sans-serif, helvetica, arial;
+    }
+
+    .forms {
+        background-color: black;
+        font-family: sans-serif, Helvetica, arial;
+        color: whitesmoke;
+        border-color: grey;
+        border-style: solid;
+        border-radius: 5px;
+        width: 200px;
+        transition-duration: 0.3s;
+    }
+
+    .forms:hover {
+        background-color: black;
+  font-family: sans-serif, Helvetica, sans-serif;
+        color: whitesmoke;
+        border-color: red;
+        border-style: solid;
+        border-radius: 5px;
+        width: 200px;
+        transition-duration: 0.3s;
+    }
+
+    .forms:focus {
+        background-color: black;
+  font-family: sans-serif, Helvetica, arial;
+        color: whitesmoke;
+        border-color: red;
+        border-style: solid;
+        border-radius: 5px;
+        width: 200px;
+        box-shadow: 0 0 15px red;
+        transition-duration: 0.3s;
+    }
+
+    .submi {
+        background-color: black;
+   font-family: sans-serif; Arial, Helvetica;
+        color: grey;
+        border-color: grey;
+        border-style: solid;
+        border-radius: 5px;
+        width: 50px;
+        transition-duration: 0.3s;
+    }
+
+    .submi:hover {
+        background-color: black;
+  font-family: sans-serif, Arial, Helvetica;
+        color: grey;
+        border-color: red;
+        border-style: solid;
+        border-radius: 5px;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+  html {
+  height: 100%;
+  width: 100%;
+  }
+
+  .tutorial{
+  color: red;
+  font-family: sans-serif, Arial;
+  }
+
+    .dnav{
+      font-family: sans-serif, arial; 
+      color: white;
+      font-size: 20px;
+      width: 200px;
+     background-color: black;
+    }
+
+  ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  text-align: left;
+  }
+
+  :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  text-align: left;
+  }
+
+  ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  text-align: left;
+  }
+
+  :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  text-align: left;
+  }
+
+  ::placeholder {
+  text-align: left;
+  }
+
+  #loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  }
+
+  .loader {
+  border: 8px solid white;
+  border-top: 8px solid red; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+  }
+
+  #link-box {
+  width: 400px;
+  height: 50px;
+  border: 3px solid #0088FF;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: red; 
+  color: white; 
+  }
+  #link-box input[type="text"] {
+  width: 60%;
+  border: none; 
+  padding: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  background-color: transparent; 
+  }
+  #link-box input[type="text"]::placeholder {
+  color: white; 
+  }
+  #link-box input[type="text"]:focus {
+  outline: none; 
+  }
+
+  .fullscreen-image {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-image: url('ezgamesconstructin.png'); 
+  background-size: cover;
+  background-position: center center; 
+  background-repeat: no-repeat;
+  z-index: 9999; 
+  pointer-events: none;
+
+  animation: preload 1s forwards;
+  }
+
+  @keyframes preload {
+  from { visibility: hidden; }
+  to { visibility: visible; }
+  }
+
+  .butto{
+  height: 100%;
+  color: grey;
+  background-color: black;
+  width: 125px;
+  border: 0px;
+  transition-duration: 0.3s;
+  font-size: 16px;
+  font-weight: bolder;
+  }
+  .butto:hover{
+  height: 100%;
+  color: #ffffff;
+  background-color: black;
+  width: 125px;
+  font-size: 16px;
+  font-weight: bolder;
+  }
+  .butt{
+  background-color: black;
+  font-family: sans-serif, arial; 
+  color: whitesmoke;
+  border-color: red;
+  border-style: solid;
+  border-radius: 10px;
+  width: 200px;
+  transition-duration: 0.3s;
+  }
+  .butt:hover{
+  background-color: black;
+  font-family: sans-serif, arial; 
+  color: whitesmoke;
+  border-color: #0088FF;
+  border-style: solid;
+  border-radius: 10px;
+  width: 205px;
+  transition-duration: 0.3s;
+  }
+
+  .buttsave{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 200px;
+  background-color: black;
+  border-color:red;
+  }
+  .buttsave:hover{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 205px;
+  background-color: black;
+  border-color: #0088FF;
+  }
+
+  .nav{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 200px;
+  background-color: black;
+  border-color:red;
+  }
+
+  .nav:hover{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 205px;
+  background-color: black;
+  border-color: #0088FF;
+  }
+  .navmc{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 205px;
+  background-color: black;
+  border-color:red;
+  }
+
+  .navmc:hover{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 210px;
+  background-color: black;
+  border-color: #0088FF;
+  }
+
+  .navcloak{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 200px;
+  background-color: black;
+  border-color:red;
+  }
+  .navcloak:hover{
+  font-family: sans-serif, arial; 
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 205px;
+  background-color: black;
+  border-color: #0088FF;
+  }
+
+  select {
+  color: white; 
+  background-color: red; 
+  border: 3px solid #0088FF; 
+  padding: 5px; 
+  font-size: 16px; 
+  font-family: sans-serif;, arial 
+  }
+
+
+  .bigger{
+  font-size: 30px;
+  }
+
+  hr{
+  width: 100%;
+  }
+
+  body{
+  background-color: black;
+  }
+
+  h1{
+  color: #0088FF;
+  font-family: sans-serif, Arial;
+  }
+
+  .redsett{
+  color: red;
+  font-family: sans-serif, Arial;
+  }
+
+  h2{
+  color: #0088FF;
+  font-family: sans-serif, Arial;
+  }
+
+  h3{
+  color: red;
+  font-family: sans-serif, Arial;
+  }
+
+  h4{
+  color: #0088FF;
+  font-family: sans-serif, Arial;
+  }
+
+  p{
+  font-family: arial;
+  font-size: 80%;
+  color: red;
+  Verdana, sans-serif Arial;
+  }
+
+
+  @keyframes imageeffect{
+  from {
+  transform: translateX(300px);
+  }
+
+  label {
+  display: block;
+  margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  }
+
+  .login-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 300px;
+  }
+
+  body {
+  background-color: #ddd;
+  overflow: hidden;
+  }
+
+  .content {
+  display: none;
+  }
+
+  .login-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  }
+  </style>
+</head>
+<body>
+<center>
+            <div id="login-form">
+              <center>
+                <br>
+                <br>
+                <h1>Sign In</h1>
+                <form>
+                    <br>
+                    <input class="forms" placeholder="Enter username..." type="text" id="username" name="username">
+                    <br>
+                    <br>
+                    <input class="forms" placeholder="Enter password..." type="password" id="password" name="password">
+                    <br>
+                  <br>
+                    <input class="submi" type="submit" value="Login">
+                </form>
+                <br>
+                <script type="text/javascript" src="https://www.stat-counter.org/count/d8bh"></script>
+ <script type='text/javascript' src='https://www.whomania.com/ctr?id='85cea358e664de4fdab1fedd0df9194b2ae906b0></script>
+            </div>
+  
+   <center>
+ <div id="content" style="display:none">
+
+  <center>
+   <button class="nav" onmousedown="clicksoundeffect.play();" onclick="javascript:(function() { var iframe = document.getElementById(&quot;rusic-modal&quot;); if (iframe) { iframe.parentNode.removeChild(iframe); }})(); enablescroll()">Close</button>
+
+   <button class="navcloak" onmousedown="clicksoundeffect.play();">Cloak</button>
+ 
+   <button class="nav" onmousedown="clicksoundeffect.play(); toggleFullScreen()">Fullscreen</button>
+
+    <button class="nav" onmousedown="openLink()">Panic Button</button>
+   
+   <a><button class="nav" onClick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdmslqDti8Pq8j7q96f1-F-6c1VtmbMS-3jQRusu7z7ATxY6A/viewform?');"onmousedown="clicksoundeffect.play();">Requests/Reports</button></a>
+  <br>
+<hr>
+  <br>
+ <!--<div class="fullscreen-image"> </div> REMEBER TO DO THIS TO THE WHOLE WEBSITE EXCEPT THIS IMAGE-->
+<img src="ezgames.png" alt="Easy Games Logo" height="300"> 
+     <br>
+   <a href="changelog.html" onmousedown="clicksoundeffect.play();"><button class="nav">Changelog</button></a> 
+  
+   <p class="bigger">Press CTRL + F to search for games/apps. Please report any games/apps not working, giving a black screen, or have ads, you can report the games with the "Requests/Reports" button. If you have any questions check the tutorials button, which is located on the nav bar where the close button is.</p>
+     <br>
+    <p class="bigger">Join the discord server below to see updates to the website before anyone, request games or features straight from the discord server instead of the google form and ask questions about the website to get an answer(s) from the owner.</p>
+   <a href="https://discord.gg/SqW5maMNas" class="dnav">https://discord.gg/SqW5maMNas</a>
+   <br>
+   <hr>
+   <br>
+  </center>
+ <center>
+  <h1>EZ Games Catagories:</h1>
+   <h2>Newest Games</h2>
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/drift-hunters/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Drift Hunters</button></a>
+  
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://hoodamath.com/mobile/games/rise-higher/game.html?nocheckorient=1&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Rise Higher</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnaf3.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 3</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnafsl.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 5</button></a>
+
+	 <a href="javascript:(function() { var a,b,c; c = &quot;https://eaglercraft.q13x.com/1.8-js/?retina=true&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Minecraft</button></a>
+	
+	 <!--
+   <h2>Roblox</h2>
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://universityequality.com/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 1</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.online/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 2</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.info/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 3</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.one/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 4</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.monster/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 5</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.world/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 6</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.xyz/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 7</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://acb.caculatorgeo.fun/demo&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Server 8</button></a>
+   !-->
+   <h2>Action Games</h2>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#gta&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Grand Theft Auto</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/getaway-shootout&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Getaway Shootout</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://mathgames67.github.io/837e973c-c2fe-4a6d-bd88-697962031ef3/content/w8.snokido.com/games/html5/awesome-tanks-2/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Awesome Tanks 2</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://undertale-play.com/wp-content/uploads/gg/bad-time-simulator/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Sans Bad Time Simulator</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://classroomjq.github.io/class2623/time-shooter-3-swat/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Time Shooter 3</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://g.vseigru.net/7/igra-dikoe-rodeo-zoopark/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Rodeo Stampede</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://w8.snokido.com/games/flash/ruffle.html?g=gun-mayhem-2-more-mayhem&v=230508&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Gun Mayhem 2</button></a>
+
+          <a href="javascript:(function() { var a,b,c; c = &quot;https://warbrokers.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Warbrokers.io</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://shellshock.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Shell Shockers</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://zombsroyale.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Zombs Royale</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/drift-hunters/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Drift Hunters</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://smashkarts.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Smash Karts</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.gamearter.com/game/scrap-metal-2/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Scrap Metal 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/example/megaman2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Mega Man 2</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://venge.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Venge.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://files.twoplayergames.org/files/games/o1/Stick_Duel_The_War/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Stick Duel</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://lesson-one.net/px/lesson16/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" 
+scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">1v1.lol</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#dm&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Doom</button></a>
+
+         <a href="javascript:(function() { var a,b,c; c = &quot;https://ev.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Ev.io</button></a>
+   <h2>Adventure Games</h2>
+	
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/10128407/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Paper Minecraft</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/ducklife.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Duck Life</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/ducklife2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Duck Life 2</button></a>
+
+         <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/ducklife3.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Duck Life 3</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://https://www.mathplayground.com/duck4/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radiuultrs: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Duck Life 4</button></a>
+	
+	 <a href="javascript:(function() { var a,b,c; c = &quot;https://eaglercraft.q13x.com/1.8-js/?retina=true&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Minecraft</button></a>
+  
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/322341152/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radiuultrs: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Terria</button></a>
+   <h2>Horror Games</h2>l
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://https://igroutka.ru/loader/game/26471/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Baldis Basics</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://backroomsgame.io/game/backrooms/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Backrooms</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://html5-games.io/game/grandma/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Granny</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Ffive-nights-at-freddy-s.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 1</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnaf2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; orverflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 2</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnaf3.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 3</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnaf4.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 4</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://run3.io/popgame/fnaf/fnafsl.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no"onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">FNAF 5</button></a>
+
+   <h2>Multiplayer Games</h2>
+
+<a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/f107b843-3661-4036-9397-2b0c6414a369%2Ffireboy-and-watergirl.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Fire Boy and Water Girl</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/godotpack@d32e9e4a86906c370853af8c5d3276a7606b4d9a/side/faw2/faw2.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Fire Boy and Water Girl 2</button></a>
+
+          <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/godotpack@a0ddbbb0c03372e2dd4672521de0ec105d6d6085/side/faw3/faw3.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Fire Boy and Water Girl 3</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/rvvASMiM/4dbe01623bbb48f298f0375934a27a82/index.html?timestamp=1696740806&countryCode=en&siteid=79&channelid=2&siteLocale=en&locale=en&gd_sdk_referrer_url=https%3A%2F%2Fwww.agame.com%2Fgame%2F8-ball-pool-with-friends&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5hZ2FtZS5jb20vZ2FtZS84LWJhbGwtcG9vbC13aXRoLWZyaWVuZHMiLCJwYXJlbnREb21haW4iOiJhZ2FtZS5jb20iLCJ0b3BEb21haW4iOiJhZ2FtZS5jb20iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xNiJ9&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">8 Ball Pool With Buddies</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/getaway-shootout&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Getaway Shootout</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/basketball-stars/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Basketball Stars</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://w8.snokido.com/games/flash/ruffle.html?g=gun-mayhem-2-more-mayhem&v=230508&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Gun Mayhem 2</button></a>
+  
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/12-minibattles&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">12 MiniBattles</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://www.ilibrarian.net/games/tic-tac-toe/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Tic Tac Toe</button></a>
+  
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.friv.com/z/games/mastercheckers/game.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Checkers</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.hoodamath.com/mobile/games/connect-4/game.html?nocheckorient=1&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Connect 4</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://files.twoplayergames.org/files/games/o1/Stick_Duel_The_War/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Stick Duel</button></a>
+   <h2>Online Multiplayer Games</h2>
+   <a href="https://drive.google.com/drive/folders/1ivRDL9ubA30GhufUaY5F_LldPlDbPUPC?usp=sharing" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Minecraft (Follow Tutorial)</button></a> 
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://warbrokers.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Warbrokers.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://shellshock.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Shell Shockers</button></a>
+
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://zombsroyale.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Zombs Royale</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://skribbl.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Skribbl.io</button></a>
+
+         <a href="javascript:(function() { var a,b,c; c = &quot;https://smashkarts.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Smash Karts</button></a> 
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://evoworld.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Evoworld.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://garticphone.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Gartic Phone</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://justfall.lol&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">JustFall.lol</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://venge.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Venge.io</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://copter.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Copter.io</button></a>
+        
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://paper-io.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Paper.io</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://agar-io.space&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radhttps://run3.io/popgame/fnaf/fnaf3.htmlius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Agar.io</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://lesson-one.net/px/lesson16/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">1v1.lol</button></a>  
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://hole-io.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Hole.io</button></a>
+        
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://ev.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Ev.io</button></a>
+  
+   <h2>Running Games</h2>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://offline-dino-game.firebaseapp.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Dinosaur Game</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://lesson-one.net/px/lesson19/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Subway Surfers</button></a>
+
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://storms.com/games/JetpackJoyride-WebProtected/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Jetpack Joyride</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://7f65203c-4b3e-43bf-bda7-0c7e1aafd5d2.id.repl.co/tanukisunset/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Tanuki Sunset</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://i.gamesgo.net/uploads/game/html5/4072/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Crossy Road</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://player.work/temple-run-2/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Temple Run 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Frun1.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Run</button></a>
+   
+   <h2>.Io Games</h2>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://mathgames67.github.io/837e973c-c2fe-4a6d-bd88-697962031ef3/content/w8.snokido.com/games/html5/awesome-tanks-2/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Awesome Tanks 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://g.vseigru.net/7/igra-dikoe-rodeo-zoopark/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Rodeo Stampede</button></a>  
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/basketball-stars/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Basketball Stars</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://shellshock.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Shell Shockers</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://warbrokers.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height:  94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Warbrokers.io</button></a>   
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://zombsroyale.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Zombs Royale</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://smashkarts.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Smash Karts</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://evoworld.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Evoworld.io</button></a>
+
+ <a href="javascript:(function() { var a,b,c; c = &quot;https://justfall.lol&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">JustFall.lol</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://copter.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Copter.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://venge.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Venge.io</button></a>
+   
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://lesson-one.net/px/lesson16/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">1v1.lol</button></a>
+
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://paper-io.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Paper.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://hole-io.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Hole.io</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://agar-io.space&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radhttps://run3.io/popgame/fnaf/fnaf3.htmlius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Agar.io</button></a>  
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://ev.io/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Ev.io</button></a>
+
+   <h2>Platformer Games</h2>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://kdata1.com/2021/03/3527391/2.1/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Pizza Tower Pre Alpha</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/hardestgame.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">The Hardest Game</button></a>
+
+             <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/hardestgame2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">The Hardest Game 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/105500895/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Geometry Dash</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/stickmanhook/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Stickman Hook</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/389464290/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Getting Over It</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/doodle-jump/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Doodle Jump</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://supermario64-webport.glitch.me&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Super Mario 64</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/snow-rider-3d&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Snow Rider 3D</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fraft-wars.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Raft Wars</button></a>
+   
+  <a href="javascript:(function() { var a,b,c; c = &quot;https://ad-freegames.github.io/flash/game/raft-wars-2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"   onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Raft Wars 2</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://justfall.lol&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">JustFall.lol</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://motox3munblocked.github.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Moto X3M</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/motox3m2/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Moto X3M2</button></a>
+  
+    <a href="javascript:(function() { var a,b,c; c = &quot;  https://cbgamesdev.github.io/chilibowlflash/portal.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Portal</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://slope-game.github.io/rungame/slope/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 95%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onclick="scrollToTop()"onmousedown="clicksoundeffect.play();"><button class="butt">Slope</button></a>
+
+<a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/762c932b4db74c6da0c1d101b2da8be6/?gdpr-targeting=0&gdpr-tracking=0&gdpr-third-party=0&euConsent=undefined&gd_sdk_referrer_url=https%3A%2F%2Fwww.funnygames.org%2Fgame%2Fvex_3.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Vex 3</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/80e6a5ae477f4d4fbcd1ea293d10087d/?gdpr-targeting=0&gdpr-tracking=0&gdpr-third-party=0&euConsent=undefined&gd_sdk_referrer_url=https%3A%2F%2Fwww.funnygames.org%2Fgame%2Fvex_4.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Vex 4</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/f120262ab72743039fbce88c1f370df8/?gdpr-targeting=0&gdpr-tracking=0&gdpr-third-party=0&euConsent=undefined&gd_sdk_referrer_url=https%3A%2F%2Fwww.funnygames.org%2Fgame%2Fvex_5.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Vex 5</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/4925e12574364121a48c61c35f649c36/?gdpr-targeting=0&gdpr-tracking=0&gdpr-third-party=0&euConsent=undefined&gd_sdk_referrer_url=https%3A%2F%2Fwww.funnygames.org%2Fgame%2Fvex_6.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Vex 6</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/0c454c9562d249d28ba3a2b50564042c/?gdpr-targeting=0&gdpr-tracking=0&gdpr-third-party=0&euConsent=undefined&gd_sdk_referrer_url=https%3A%2F%2Fwww.funnygames.org%2Fgame%2Fvex_7.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Vex 7</button></a>
+   <!--next section-->
+    <h2>Strategy Games</h2>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/73227950/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bloons Tower Defense</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.friv.com/z/games/extremecarparking/game.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Extreme Car Parking</button></a>
+
+ <a href="javascript:(function() { var a,b,c; c = &quot;https://www.miniplay.com/embed/merge-round-racers#&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Merge Round Racers</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fplants-vs-zombies.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Plants Vs. Zombies</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://emulatoros.github.io/gfile/snake/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Google Snake</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamemonetize.co/ushitaltif0ig5by3w54p4cy9sd3yptt/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Candy Crush</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://littlebigsnake.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Little Big Snake</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.yad.com/games/Survivor-Io/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; borrder: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Survivor.io</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://burritobison.github.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Burrito Bison</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/cookie-clicker/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Cookie Clicker</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https://https://cbgamesdev.github.io/chilibowlflash/hw/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Happy Wheels</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://game316009.konggames.com/gamez/0031/6009/live/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">Retro Bowl</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.ilibrarian.net/games/battleship/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Battleship</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/blackjack/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Black Jack</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.friv.com/z/games/mastercheckers/game.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Checkers</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.google.com/logos/fnbx/solitaire/standalone.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Solitare</button></a>
+
+   <h2>Mobile Games</h2>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://kdata1.com/2021/03/adcapitalist/?d&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Adventure Capitalist</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.miniplay.com/embed/merge-round-racers#&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Merge Round Racers</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/backflip-dive-3d&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Backflip Dive 3D</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://lesson-one.net/px/lesson19/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Subway Surfers</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/stickmanhook/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Stickman Hook</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://storms.com/games/JetpackJoyride-WebProtected/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Jetpack Joyride</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://player.work/temple-run-2/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Temple Run 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.yad.com/games/Survivor-Io/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Survivor.io</button></a>
+
+<a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamemonetize.co/ushitaltif0ig5by3w54p4cy9sd3yptt/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Candy Crush</button></a>
+
+<a href="javascript:(function() { var a,b,c; c = &quot;https://webglmath.github.io/doodle-jump/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Doodle Jump</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://burritobison.github.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Burrito Bison</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://smashkarts.io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Smash Karts</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://i.gamesgo.net/uploads/game/html5/4072/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Crossy Road</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://slope-game.github.io/newgame/monkey-mart/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Monkey Mart</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/39521030/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Fruit Ninja</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://www.hoodamath.com/mobile/games/rise-higher/game.html?nocheckorient=1&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Rise Higher</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/gunspin&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Gunspin</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.twoplayergames.org/gameframe/hole-io&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Hole.io</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://slope-game.github.io/new3623/bitlife-life-simulator/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy"  scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bitlife</button></a>
+<!--next section-->
+    <h2>Puzzle Games</h2>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://g.vseigru.net/14/igra-stikmen-ograblenie-banka/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Henry Stickman: The Bank</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fescaping-the-prison.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Henry Stickman: The Prison</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https:////g.vseigru.net/14/igra-stikmen-krazha-almaza&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Henry Stickman: The Diamond</button></a>
+
+              <a href="javascript:(function() { var a,b,c; c = &quot;https:////g.vseigru.net/14/igra-stikmen-dirizhabl&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Henry Stickman: The Airship</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https:////g.vseigru.net/14/igra-stikmen-pobeg-iz-kompleksa&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Henry Stickman: The Complex</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://impossible-quiz.online&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">The Impossible Quiz</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://iclouds.space/FLASH/swf.php?filename=the_impossible_quiz_2_ad.swf&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">The Impossible Quiz 2</button></a>
+   
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://dumbwaystodie.io/game/dumb-ways-to-die&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Dumb Ways To Die</button></a>
+
+         <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/cb62ed5fb5214e029aa0f9c07adcdd2b/?gdpr-targeting=1&gd_sdk_referrer_url=https%3A%2F%2Fgameforge.com%2Fen-US%2Flittlegames%2Fdumb-ways-to-die-2-the-games%2F%23&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Dumb Ways To Die 2</button></a>
+
+ <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/18d28481ea514f3c838f9a5a355fb0f7/?gd_sdk_referrer_url=https://bobtherobber.co&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bob The Robber</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/34d6aae0257d4e4c8068cbdfc11a8758/?gd_sdk_referrer_url=https://bobtherobber.co/bob-the-robber-2&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bob The Robber 2</button></a>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/16eb5eb6f9b841688478eb635fde78b5/?gd_sdk_referrer_url=https://bobtherobber.co/bob-the-robber-3&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bob The Robber 3</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/f7f522cafad845d68fcddadbcb581087/?gd_sdk_referrer_url=https://bobtherobber.co/bob-the-robber-4&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bob The Robber 4</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/rvvASMiM/2b89b70d201b443991360f2ba5622c17/index.html?gdpr-targetin=%3Fgd_sdk_referrer_url%3Dhttps%3A%2F%2Fbobtherobber.co%2Fbob-the-robber-5-the-temple-adventure&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2h0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tLzJiODliNzBkMjAxYjQ0Mzk5MTM2MGYyYmE1NjIyYzE3Lz9nZHByLXRhcmdldGluP2dkX3Nka19yZWZlcnJlcl91cmw9aHR0cHM6Ly9ib2J0aGVyb2JiZXIuY28vYm9iLXRoZS1yb2JiZXItNS10aGUtdGVtcGxlLWFkdmVudHVyZSIsInBhcmVudERvbWFpbiI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidG9wRG9tYWluIjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xNiJ9&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bob The Robber 5</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fplants-vs-zombies.xml&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Plants Vs. Zombies</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/ctr/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">The Sniper Code</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://classroomjq.github.io/class2623/time-shooter-3-swat/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Time Shooter 3</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://littlealchemy2.com/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Little Alchemy 2</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://nickarocho.github.io/minesweeper/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Minesweeper</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamedistribution.com/rvvASMiM/503e92726d0d470b941999f25c315e35/index.html?gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2Nkbi5raXoxMC5jb20vIiwicGFyZW50RG9tYWluIjoiY2RuLmtpejEwLmNvbSIsInRvcERvbWFpbiI6ImtpejEwLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Tomb of the Mask</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https://https://cbgamesdev.github.io/chilibowlflash/hw/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Happy Wheels</button></a>
+
+<a href="javascript:(function() { var a,b,c; c = &quot;https://html5.gamemonetize.co/ushitaltif0ig5by3w54p4cy9sd3yptt/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Candy Crush</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/ctr/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Cut The Rope</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://ad-freegames.github.io/flash/game/bloxorz.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Bloxorz</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://bosorioo.github.io/wordle-unlimited/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Wordle</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://itch.io/embed-upload/8194123?color=46536B&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Sandtrix</button></a>
+   
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://chvin.github.io/react-tetris/?lan=en&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Tetris</button></a>
+
+                <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/2048/index.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">2048</button></a>
+  
+   <h2>Cooking Games</h2>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/awayfl/v2/?swf=papaspizzeria.swf&name=Papa%27s%20Pizzeria&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Pizzeria</button></a>
+
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papasburgeria.swf&name=Papa%27s%20Burgeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Burgeria</button></a>
+
+          <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papastacomia.swf&name=Papa%27s%20Taco%20Mia&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Taco Mia</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://en.gameslol.net/data/awayjs/papa/freezeria.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Freezeria</button></a>
+          
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papaspancakeria.swf&name=Papa%27s%20Pancakeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Pancakeria</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papaswingeriav2.swf&name=Papa%27s%20Wingeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Wingeria</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papashotdoggeria.swf&name=Papa%27s%20Hot%20Doggeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Hotdogaria</button></a>
+
+           <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papascupcakeria.swf&name=Papa%27s%20Cupcakeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Cupcakeria</button></a>
+
+                <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papaspastaria.swf&name=Papa%27s%20Pastaria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Pastaria</button></a>
+
+                <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papasdonuteria.swf&name=Papa%27s%20Doggeria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Donuteria</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papascheeseria.swf&name=Papa%27s%20Cheeseria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Cheeseria</button></a>
+
+        <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papasbakeria.swf&warn=false&name=Papa%27s%20Bakeria&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Bakeria</button></a>
+
+      <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papassushiria.swf&name=Papa%27s%20Sushiria&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Sushiria</button></a>
+
+            <a href="javascript:(function() { var a,b,c; c = &quot;https://www.getgames.io/games/ruffle/?swf=papasscooperia.swf&name=Papa%27s%20Scooperia&warn=false&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Papa's Scooperia</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://kdata1.com/2023/04/jacksmith/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Jacksmith</button></a>
+   <!--next section-->
+   <h2>Retro Games</h2>
+
+       <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#super_street_fighter_3_alpha&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Street Fighter 3 Alpha</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#gta&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no"  onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Grand Theft Auto</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/sonic.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Sonic The Hedgehog</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://turbowarp.org/173042683/embed&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; hborder: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Super Mario World</button></a>
+
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://supermario.ee/mario.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Super Mario Bros.</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://supermario64-webport.glitch.me&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Super Mario 64</button></a>
+
+             <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#pokemonemerald&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Pokemon Emerald</button></a>
+
+     <a href="javascript:(function() { var a,b,c; c = &quot;https://retrobowl.me/iframe/donkey-kong/index.php&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Donkey Kong</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/example/megaman2.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Mega Man 2</button></a>
+
+                  <a href="javascript:(function() { var a,b,c; c = &quot;https://www.echalk.co.uk/amusements/Games/asteroidsClassic/ateroids.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Asteroids</button></a>
+   
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://www.echalk.co.uk/amusements/Games/Pacman/pacman.html&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Pacman</button></a>
+
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://tinydobbins.com/play/GalagaMini/&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Galaga</button></a>
+   
+    <a href="javascript:(function() { var a,b,c; c = &quot;https://cbgamesdev.github.io/chilibowlflash/GBA-gh-pages/launcher.html#dm&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();"loading="lazy" scrolling="no" onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()"class="butt">Doom</button></a>
+   <!--      
+     <h2>Apps</h2>
+   <a href="javascript:(function() { var a,b,c; c = &quot;https://myinstants.com&quot;; b = document.createElement(&quot;iframe&quot;); b.setAttribute(&quot;src&quot;, c); b.setAttribute(&quot;id&quot;,&quot;rusic-modal&quot;); b.setAttribute(&quot;style&quot;,&quot;position: fixed; z-index: 999999; width: 100%; height: 94%; left: 0px; top: 48px; border: 0px; overflow: hidden; border-radius: 0px; background-color: black;&quot;); document.body.appendChild(b);})();" loading="lazy"   onmousedown="clicksoundeffect.play();"><button onclick="scrollToTop()" class="butt">My Instants</button></a>
+-->
+   <br>
+   <br>
+  <center>
+    <hr>
+       <center>
+       <h1>Settings</h1>
+
+       <div id="link-box">
+        <input type="text" placeholder="https://classroom.google.com"></div>
+       <button class="buttsave" onmousedown="clicksoundeffect.play();" onclick="saveLink()">Save Link</button>
+       <br>
+       <br>
+      <select id="selectFunction">
+        <option value="cloakgc">Choose Cloaking Website</option>
+        <option value="cloakgc">Google Classroom</option>
+         <option value="cloaksheets">Google Sheets</option>
+        <option value="cloakslides">Google Slides</option>
+        <option value="cloakdocs">Google Docs</option>
+        <option value="cloakpdf">PDF File</option>
+      </select>
+       <br>
+       <br>
+    <hr>
+       <h2>Disclaimer:</h2>
+        <h3>The creator of this website (EZ Games) does not own any of these games nor the websites attached, please put your personal information in with caution as the owner of the games or apps listed may have a malicious intent, if this is discovered please write a request and I will do my best to remove said game or app. I do not encourage being on this website during class nor am I to take responsibility for students playing games, using the apps, or anything on this website.</h3>
+    <script src="script.js"></script>
+     <script>
+        function loadContent() {
+            setTimeout(function () {
+                const loadingScreen = document.getElementById('loading-screen');
+                const content = document.getElementById('content');
+                
+              
+                loadingScreen.style.display = 'none';
+
+               
+                content.style.display = 'block';
+            }, 1250); 
+        }
+
+        
+        window.addEventListener('load', loadContent);
+    </script>
+ <!-- button sound effects -->
+  <script>
+    var clicksoundeffect = new Audio(); 
+    clicksoundeffect.src = "clicksoundeffect.mp3";
+  </script>
+    <script>  
+      var d_location = 'us';
+        var lc = localStorage.getItem('lc');
+        if(lc){
+            d_location = lc;
+        } else {
+            localStorage.setItem('lc',d_location);
+        }
+        function setLocation(lc){
+            localStorage.setItem('lc',lc);
+        }
+        function openApp(url){
+            const blanktab = localStorage.getItem("blanktab") || 0;
+            if(blanktab == 0){
+                document.getElementById('category_takeover').style.height = '91vh';
+                document.getElementById('category_takeover').style.width = '100%';
+                var html = ` <iframe class="iframeloader" id="app_frame" src="/class.html?domain=${url}" frameborder="0"></iframe>`;
+                document.getElementById('category_takeover').innerHTML = html;
+            } else {
+                const new_url = `https://${location.hostname}/class.html?domain=${url}`;
+                win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                win.document.body.style.background =  `url('https://${location.hostname}/prx-loading.gif') 5vw center center no-repeat;`;
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = new_url;
+                win.document.body.appendChild(iframe);
+            }
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }</script>
+<script>
+function scrollToTop() {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+   }
+
+  function enablescroll() {
+    document.body.style.overflow = "auto";
+}
+</script>
+<script>
+function disableMiddleClick(event) {
+  if (event.button === 1) { 
+    event.preventDefault(); 
+    alert("Middle mouse button click is not allowed on this button.");
+  }
+}
+
+function addClickHandlers() {
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("mousedown", disableMiddleClick);
+  }
+}
+
+window.addEventListener("load", addClickHandlers);
+	</script>
+                  <script>
+             var link = 'https://classroom.google.com/';
+             var linkSaved = false;
+
+             function openLink() {
+             if (linkSaved) {
+                 window.open(link, '_blank');
+             } else {
+                 window.open('https://classroom.google.com/', '_blank');
+             }
+         }
+
+             function saveLink() {
+                 var input = document.querySelector('#link-box input[type="text"]');
+                 if (input.value) {
+                     link = input.value;
+                     if (!link.startsWith('http://') && !link.startsWith('https://')) {
+                         link = 'https://' + link;
+                     }
+                     linkSaved = true;
+                    alert('Saved Successfully');
+                 } else {
+                     linkSaved = false;
+                 }
+             }
+         </script>
+                   <script>
+           var selectFunction = document.getElementById('selectFunction');
+         var myButton = document.querySelector('.navcloak');
+
+
+         var selectedFunction = localStorage.getItem('selectedFunction');
+
+
+         if (selectedFunction) {
+           selectFunction.value = selectedFunction;
+         }
+
+
+         myButton.onclick = window[selectedFunction];
+
+
+         selectFunction.addEventListener('change', function() {
+           var selectedFunction = selectFunction.value;
+
+
+           localStorage.setItem('selectedFunction', selectedFunction);
+
+           myButton.onclick = window[selectedFunction];
+         });
+
+
+         function cloakgc(){
+           var tab = window.open('about:blank', '_blank');
+           tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Home</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+           tab.document.close();
+
+           window.location.replace("https://classroom.google.com");
+         }
+
+         function cloakdocs(){
+           var tab = window.open('about:blank', '_blank');
+           tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Docs</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+           tab.document.close();
+
+           window.location.replace("https://docs.google.com");
+         }
+
+         function cloaksheets(){
+           var tab = window.open('about:blank', '_blank');
+           tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Sheets</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+           tab.document.close();
+
+           window.location.replace("https://docs.google.com/spreadsheets/");
+         }
+
+         function cloakslides(){
+           var tab = window.open('about:blank', '_blank');
+           tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Slides</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+           tab.document.close();
+
+           window.location.replace("https://docs.google.com/presentation/");
+         }
+
+         function cloakpdf(){
+           var tab = window.open('about:blank', '_blank');
+           tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Classwork PDF</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_3_pdf_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+           tab.document.close();
+
+           window.location.replace("https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf");
+         }
+         </script>
+         <script>
+           function toggleFullScreen() {
+             if (document.fullscreenElement) {
+               document.exitFullscreen();
+             } else {
+               document.documentElement.requestFullscreen();
+             }
+           }
+
+         </script>
+         <script>
+document.addEventListener("fullscreenchange", function() {
+             var fullscreenbtn = document.getElementById("fullscreen-btn");
+             if (document.fullscreenElement) {
+               fullscreenbtn.innerText = "Exit Full Screen";
+               document.body.classList.add("fullscreen");
+             } else {
+               fullscreenbtn.innerText = "Full Screen";
+               document.body.classList.remove("fullscreen");
+             }
+           });
+         </script>
+         <!--widgetbot.io
+         <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
+            new Crate({
+              server: '1172012200806862939',
+              channel: '1176584847494500362',
+            })
+          </script>
+         -->
+</body>
+</html>
+

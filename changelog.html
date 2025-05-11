@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script href="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Games Changelog</title>
+    <link rel="icon" type="image/ico+xml" href="ezgames.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+  <center>
+  <img src="ezgames.png" alt="Easy Games Logo" height="300"> 
+    <br>
+    <a href="index.html" onmousedown="clicksoundeffect.play();"><button class="nav">Back to EZ Games</button></a> 
+    <h1>Changelog</h1>
+    <hr> 
+<h2>BETA 1.0</h2>
+    <h3>Addded better horror games.
+    <br>
+    Roblox is now playable within EZ Games.
+      <br>
+      Added the "New Games" section.
+       <br>
+    </h3>
+    
+    <h2>BETA 2.0</h2>
+    <h3>
+     Ultraviolet proxy broke, replaced with Google.
+    Added Roblox catagory. 
+      Added 8 servers of now.gg to Roblox catagory.
+    </h3>
+    
+     <h2>BETA 3.0</h2>
+    <h3>
+    1 year gap between updates, offline. Website back on, deleted the apps section + Roblox (none were working). Minecraft added.
+    </h3>
+    
+    <hr>
+    <h2>Disclaimer:</h2>
+        <h3>The creator of this website (EZ Games) does not own any of these games nor the websites attached, please put your personal information in with caution as the owner of the games or apps listed may have a malicious intent, if this is discovered please write a request and I will do my best to remove said game or app. I do not encourage being on this website during class nor am I to take responsibility for students playing games, using the proxy, or anything on this website.</h3>
+  </center>
+      <script>
+
+        function loadContent() {
+            setTimeout(function () {
+                const loadingScreen = document.getElementById('loading-screen');
+                const content = document.getElementById('content');
+
+
+                loadingScreen.style.display = 'none';
+
+
+                content.style.display = 'block';
+            }, 1250); 
+        }
+
+
+        window.addEventListener('load', loadContent);
+    </script>
+ <!-- button sound effects -->
+  <script>
+    var clicksoundeffect = new Audio(); 
+    clicksoundeffect.src = "clicksoundeffect.mp3";
+  </script>
+    <script>  var d_location = 'us';
+        var lc = localStorage.getItem('lc');
+        if(lc){
+            d_location = lc;
+        } else {
+            localStorage.setItem('lc',d_location);
+        }
+        function setLocation(lc){
+            localStorage.setItem('lc',lc);
+        }
+        function openApp(url){
+            const blanktab = localStorage.getItem("blanktab") || 0;
+            if(blanktab == 0){
+                document.getElementById('category_takeover').style.height = '91vh';
+                document.getElementById('category_takeover').style.width = '100%';
+                var html = ` <iframe class="iframeloader" id="app_frame" src="/class.html?domain=${url}" frameborder="0"></iframe>`;
+                document.getElementById('category_takeover').innerHTML = html;
+            } else {
+                const new_url = `https://${location.hostname}/class.html?domain=${url}`;
+                win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                win.document.body.style.background =  `url('https://${location.hostname}/prx-loading.gif') 5vw center center no-repeat;`;
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = new_url;
+                win.document.body.appendChild(iframe);
+            }
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }</script>
+<script>
+function scrollToTop() {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+   }
+
+  function enablescroll() {
+    document.body.style.overflow = "auto";
+}
+</script>
+<script>
+function disableMiddleClick(event) {
+  if (event.button === 1) { 
+    event.preventDefault(); 
+    alert("Middle mouse button click is not allowed on this button.");
+  }
+}
+
+function addClickHandlers() {
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("mousedown", disableMiddleClick);
+  }
+}
+
+window.addEventListener("load", addClickHandlers);
+  </script>
+         <script>
+    var link = 'https://classroom.google.com/';
+    var linkSaved = false;
+
+    function openLink() {
+    if (linkSaved) {
+        window.open(link, '_blank');
+    } else {
+        window.open('https://classroom.google.com/', '_blank');
+    }
+}
+
+    function saveLink() {
+        var input = document.querySelector('#link-box input[type="text"]');
+        if (input.value) {
+            link = input.value;
+            if (!link.startsWith('http://') && !link.startsWith('https://')) {
+                link = 'https://' + link;
+            }
+            linkSaved = true;
+           alert('Saved Successfully');
+        } else {
+            linkSaved = false;
+        }
+    }
+</script>
+          <script>
+    function toggleFullscreen() {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        exitFullscreen();
+      } else {
+        enterFullscreen();
+      }
+    }
+
+    function enterFullscreen() {
+      var element = document.documentElement;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+
+    function exitFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+</script>
+  <script>
+        var selectFunction = document.getElementById('selectFunction');
+var myButton = document.querySelector('.navcloak');
+
+window.onload = function() {
+  var selectedFunction = selectFunction.value;
+  if (selectedFunction) {
+    myButton.onclick = window[selectedFunction];
+  }
+}
+
+selectFunction.addEventListener('change', function() {
+  myButton.onclick = window[selectFunction.value];
+});
+     function cloakgc(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Home</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://classroom.google.com");
+  }
+
+    function cloakdocs(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Docs</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com");
+  }
+
+  function cloaksheets(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Sheets</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com/spreadsheets/");
+  }
+function cloakslides(){
+var tab = window.open('about:blank', '_blank');
+tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Slides</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com/presentation/");
+  }
+
+  function cloakpdf(){
+  var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Classwork PDF</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_3_pdf_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf");
+  }
+
+    function loadContent() {
+            setTimeout(function () {
+                const loadingScreen = document.getElementById('loading-screen');
+                const content = document.getElementById('content');
+
+
+                loadingScreen.style.display = 'none';
+
+
+                content.style.display = 'block';
+            }, 1250); 
+        }
+
+        // Call the loadContent function when the page is fully loaded
+        window.addEventListener('load', loadContent);
+
+</script>
+</body>
+</html>

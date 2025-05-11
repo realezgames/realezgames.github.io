@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script href="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Games Tutorials</title>
+    <link rel="icon" type="image/ico+xml" href="ezgames.png">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+   <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+  <center>
+  <img src="ezgames.png" alt="Easy Games Logo" height="300"> 
+    <br>
+    <a href="index.html" onmousedown="clicksoundeffect.play();"><button class="nav">Back to EZ Games</button></a> 
+    <br>
+    <hr>
+    <br>
+    <h2>Make your own private EZ Games.</h2>
+    <h3>First, go to Google Sites, create a new site, and on the right side of the screen you will see "embed" press this button and put in the link to a working/updating version of EZ Games ex. https://www.mathcalculators.repl.co You can press preview and cloak it to open EZ Games in a new tab. On the other hand, you can use EZ Games within the google sites instead.</h3>
+    
+    <h2>Panic Link Pannel:</h2>
+  <h3>For the "Enter Panic Link" pannel enter any link you want, and press save. Then you can press the "Panic Button" at the top and it will bring you to that website. If you do not type anything the default is Google Classroom.</h3>
+
+    <h2>Cloak Dropdown Menu:</h2>
+  <h3>To make the tab of EZ Games look like an educational website. First click on the dropdown menu and click on any of the websites listed, then press the cloak button below. If you do not select anything the default is Google Classroom.</h3>
+
+   <h2>Roblox Proxy:</h2>
+        <h3>To get access to a proxy in case the Proxy/Google is not working for you go to "Roblox", then "Privacy" and scroll through until you find a blue text saying "customer support" click on it then you will have a proxy in which you can search anything on.</h3>
+
+    <h2>Online Games With Codes.</h2>
+    <h3>To get access to a lobby/game with your friends copy the code into the proxy and in some cases it will not work just try again and it will work, if it ends up not working check "Ultraviolet Proxy" for more information.</h3>
+
+    <h2>Unblock Games (Task Manger):</h2>
+        <h3>On Chromebook press Search (Magnifying Glass Above Left Shift) + ESC to open Task Manager, once you open Task Manager find your school's extension to block websites, ex. GoGuardian, Securely, Cisco Umbrella. Scroll through and find it, once you find it press on it and click end task or the enter key and quickly click on the game you want to play.</h3>
+
+       <h2>Minecraft Download (Hacks Enabled) + Working Multiplayer Minecraft Servers:</h2>
+    <h3>If your school does not allow you to open Google Drives, download it on a personal account, once it has finished downloading open the file and it create a new tab with Minecraft on it, to play on each server copy the wss://etc text below into the "server address" box and press play. For anything that is not the default eaglercraft press right shift to access the hacks/settings.</h3>
+    <h3>
+      1. Bedwars, Minigames, Skywars, Active & More: wss://mc.asspixel.net/
+      <br>
+       2. Bedwars, Minigames, Skywars, & More: wss://zentic.cc
+   <br>
+     3. Minigames & Survival: wss://asianf4rmer.minecraft.pe
+       <br>
+    4. Minigames & Survival: wss://aeon-network.net/1.8
+     <br>
+     5. Minigames: wss://legxndsmp.minecraft.pe
+  <br>
+     6. Anarchy: wss://reading-gs.q13x.com
+      <br>
+    </h3>
+<hr>
+    <h2>Disclaimer:</h2>
+        <h3>The creator of this website (EZ Games) does not own any of these games nor the websites attached, please put your personal information in with caution as the owner of the games or apps listed may have a malicious intent, if this is discovered please write a request and I will do my best to remove said game or app. I do not encourage being on this website during class nor am I to take responsibility for students playing games, using the proxy, or anything on this website.</h3>
+  </center>
+      <script>
+
+        function loadContent() {
+            setTimeout(function () {
+                const loadingScreen = document.getElementById('loading-screen');
+                const content = document.getElementById('content');
+
+
+                loadingScreen.style.display = 'none';
+
+
+                content.style.display = 'block';
+            }, 1250); 
+        }
+
+
+        window.addEventListener('load', loadContent);
+    </script>
+ <!-- button sound effects -->
+  <script>
+    var clicksoundeffect = new Audio(); 
+    clicksoundeffect.src = "clicksoundeffect.mp3";
+  </script>
+    <script>  var d_location = 'us';
+        var lc = localStorage.getItem('lc');
+        if(lc){
+            d_location = lc;
+        } else {
+            localStorage.setItem('lc',d_location);
+        }
+        function setLocation(lc){
+            localStorage.setItem('lc',lc);
+        }
+        function openApp(url){
+            const blanktab = localStorage.getItem("blanktab") || 0;
+            if(blanktab == 0){
+                document.getElementById('category_takeover').style.height = '91vh';
+                document.getElementById('category_takeover').style.width = '100%';
+                var html = ` <iframe class="iframeloader" id="app_frame" src="/class.html?domain=${url}" frameborder="0"></iframe>`;
+                document.getElementById('category_takeover').innerHTML = html;
+            } else {
+                const new_url = `https://${location.hostname}/class.html?domain=${url}`;
+                win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                win.document.body.style.background =  `url('https://${location.hostname}/prx-loading.gif') 5vw center center no-repeat;`;
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = new_url;
+                win.document.body.appendChild(iframe);
+            }
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }</script>
+<script>
+function scrollToTop() {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+   }
+
+  function enablescroll() {
+    document.body.style.overflow = "auto";
+}
+</script>
+<script>
+function disableMiddleClick(event) {
+  if (event.button === 1) { 
+    event.preventDefault(); 
+    alert("Middle mouse button click is not allowed on this button.");
+  }
+}
+
+function addClickHandlers() {
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("mousedown", disableMiddleClick);
+  }
+}
+
+window.addEventListener("load", addClickHandlers);
+  </script>
+         <script>
+    var link = 'https://classroom.google.com/';
+    var linkSaved = false;
+
+    function openLink() {
+    if (linkSaved) {
+        window.open(link, '_blank');
+    } else {
+        window.open('https://classroom.google.com/', '_blank');
+    }
+}
+
+    function saveLink() {
+        var input = document.querySelector('#link-box input[type="text"]');
+        if (input.value) {
+            link = input.value;
+            if (!link.startsWith('http://') && !link.startsWith('https://')) {
+                link = 'https://' + link;
+            }
+            linkSaved = true;
+           alert('Saved Successfully');
+        } else {
+            linkSaved = false;
+        }
+    }
+</script>
+          <script>
+    function toggleFullscreen() {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        exitFullscreen();
+      } else {
+        enterFullscreen();
+      }
+    }
+
+    function enterFullscreen() {
+      var element = document.documentElement;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+
+    function exitFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+</script>
+  <script>
+        var selectFunction = document.getElementById('selectFunction');
+var myButton = document.querySelector('.navcloak');
+
+window.onload = function() {
+  var selectedFunction = selectFunction.value;
+  if (selectedFunction) {
+    myButton.onclick = window[selectedFunction];
+  }
+}
+
+selectFunction.addEventListener('change', function() {
+  myButton.onclick = window[selectFunction.value];
+});
+     function cloakgc(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Home</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://classroom.google.com");
+  }
+
+    function cloakdocs(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Docs</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com");
+  }
+
+  function cloaksheets(){
+    var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Sheets</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com/spreadsheets/");
+  }
+function cloakslides(){
+var tab = window.open('about:blank', '_blank');
+tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Google Slides</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://docs.google.com/presentation/");
+  }
+
+  function cloakpdf(){
+  var tab = window.open('about:blank', '_blank');
+  tab.document.documentElement.innerHTML = '<!DOCTYPE html><html><head><title>Classwork PDF</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_3_pdf_x16.png"><style>body {margin:0;overflow:hidden}</style></head><body><iframe width="100%" id="incognito" height="100%" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+  tab.document.close();
+
+  window.location.replace("https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf");
+  }
+
+    function loadContent() {
+            setTimeout(function () {
+                const loadingScreen = document.getElementById('loading-screen');
+                const content = document.getElementById('content');
+
+
+                loadingScreen.style.display = 'none';
+
+
+                content.style.display = 'block';
+            }, 1250); 
+        }
+
+        // Call the loadContent function when the page is fully loaded
+        window.addEventListener('load', loadContent);
+
+</script>
+</body>
+</html>
