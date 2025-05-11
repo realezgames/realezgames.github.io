@@ -1,9 +1,5 @@
-const validCredentials = [
-  {
-    username: 'ez',
-    passwords: ['games', '2900']
-  }
-];
+const allowPublicPassword = true;  // Toggle 'games'
+const allowPrivatePassword = true;  // Toggle '2900'
 
 const loginForm = document.querySelector('#login-form');
 const usernameInput = loginForm.querySelector('#username');
@@ -16,9 +12,22 @@ loginForm.addEventListener('submit', (event) => {
   const enteredUsername = usernameInput.value;
   const enteredPassword = passwordInput.value;
 
-  const isValid = validCredentials.some(user =>
-    user.username === enteredUsername && user.passwords.includes(enteredPassword)
-  );
+  let isValid = false;
+
+  if (enteredUsername === 'ez') {
+    if (enteredPassword === 'games') {
+      if (allowPublicPassword) {
+        isValid = true;
+      } else {
+        alert('EZGAMES is temporarily unavailable please try again later.');
+        return;
+      }
+    } else if (enteredPassword === '2900') {
+      if (allowPrivatePassword) {
+        isValid = true;
+      }
+    }
+  }
 
   if (isValid) {
     content.style.display = 'block';
@@ -30,8 +39,6 @@ loginForm.addEventListener('submit', (event) => {
 });
 
 const clicksoundeffect = new Audio('clicksoundeffect.mp3');
-
-
 
 function cloak(){
   var tab = window.open('about:blank', '_blank');
