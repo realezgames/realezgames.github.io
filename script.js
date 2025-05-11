@@ -1,4 +1,4 @@
-const allowPublicPassword = true;  // Toggle 'games'
+const allowPublicPassword = false;  // Toggle 'games'
 const allowPrivatePassword = true;  // Toggle '2900'
 
 const loginForm = document.querySelector('#login-form');
