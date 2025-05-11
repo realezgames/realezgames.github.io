@@ -19,12 +19,15 @@ loginForm.addEventListener('submit', (event) => {
       if (allowPublicPassword) {
         isValid = true;
       } else {
-        alert('EZGAMES is temporarily unavailable please try again later.'); // Alert for public password being disabled
+        alert('EZGAMES is temporarily unavailable please try again later.');
         return;
       }
     } else if (enteredPassword === '2900') {
       if (allowPrivatePassword) {
         isValid = true;
+      } else {
+        alert('Developer password disabled.');
+        return;
       }
     }
   }
@@ -34,11 +37,13 @@ loginForm.addEventListener('submit', (event) => {
     loginForm.style.display = 'none';
     clicksoundeffect.play();
   } else {
-    alert('Error: Invalid username or password'); 
+    alert('Error: Invalid username or password');
   }
 });
 
 const clicksoundeffect = new Audio('clicksoundeffect.mp3');
+
+
 
 function cloak(){
   var tab = window.open('about:blank', '_blank');
